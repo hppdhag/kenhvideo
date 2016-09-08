@@ -52,14 +52,27 @@ $('.close-fs-share-box').click(function(){
 $('.fullscreen-top').removeClass('hide').addClass('show');$('.v-control').removeClass('hide').addClass('show');$('.fs-share').removeClass('hide').addClass('show');$('.fs-share-box').css({'opacity':'0','z-index':'1'});
 });
 //setting video
-$('.setting').click(function(){
-$('.setting').removeClass('show').addClass('hide');$('.remove-setting').removeClass('hide').addClass('show');
-$('.setting-box').removeClass('hide').addClass('show');$('.setting-box').addClass('setting-box-transform');
+$(document).ready(function(){
+    $('.setting').click(function(event){
+    event.stopPropagation();
+    $(".setting-box").removeClass('hide').addClass('show');
+         $(".setting").removeClass("show").addClass('hide');
+         $(".remove-setting").removeClass("hide").addClass('show');
+    });
+    $('.remove-setting').click(function(event){
+    event.stopPropagation();
+   $(".setting-box").removeClass('show').addClass('hide');
+         $(".remove-setting").removeClass("show").addClass('hide');
+         $(".setting").removeClass("hide").addClass('show');
+    });
+    $(".setting-box").on("click", function (event) {
+        event.stopPropagation();
+    });
 });
-$('.remove-setting').click(function(){
-$('.remove-setting').removeClass('show').addClass('hide');$('.setting').removeClass('hide').addClass('show');
-$('.setting-box').removeClass('show').addClass('hide');$('.setting-box').removeClass('setting-box-transform');
+$(document).on("click", function () {
+    $(".setting-box").removeClass('show').addClass('hide');
 });
+
 $('.speed-layer').click(function(){
 $('.speed-layer-box').removeClass('hide').addClass('show');$('.first-layer').removeClass('show').addClass('hide');
 $('.setting-box').removeClass('setting-box-transform').addClass('speed-layer-transform');
