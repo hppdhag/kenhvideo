@@ -400,7 +400,7 @@ $('.speed-025').on('click',function(){$.cookie('speedMode',025);speed(this,0.25)
 
 $video.on('playing',function(){$video[0].play;
 $('.autoplay-is-on').removeClass('show').addClass('hide');$('.video-endscreen-bg').removeClass('show').addClass('hide');
-$('.autoplay-is-on').css({'visibility':'hidden'});$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'99'});$('.fullscreen-top').css({'height':'54px','line-height':'54px'});$('.setting').click(function(){$('.v-control').css('opacity','1')});$('.remove-setting').change(function(){$('.v-control').css('opacity','0')});
+$('.autoplay-is-on').css({'visibility':'hidden'});$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'99'});$('.fullscreen-top').css({'height':'54px','line-height':'54px'});$('.setting').click(function(){$('.v-control').css('opacity','1')});$('.remove-setting').click(function(){$('.v-control').css('opacity','0')};);
 $('.fs-share').click(function(){$video[0].pause()});$('.close-fs-share-box').click(function(){$video[0].play()});
 $('.play-pause').removeClass('hide').addClass('show');$('.replay-icon').removeClass('show').addClass('hide');
 //Tự động phát
