@@ -657,13 +657,13 @@ $video_parent.find('.mediumscreen').on('click', function (e)
 					
 mediumscreen = true;
 $.cookie('wideVideo',true);
-$video_parent.addClass('player-mediumscreen');$('.post-body').addClass('no-margin');$('.playlist').addClass('playlist-margin-mediumscreen');$(".post-related-items").addClass('margin-mediumscreen');$('.mediumscreen').removeClass('expand-icon').addClass('narrow-icon');$('.warning').addClass('mediumscreen')					
+$video_parent.addClass('player-mediumscreen');$('.post-body').addClass('no-margin');$('.playlist').addClass('playlist-margin-mediumscreen');$('.warning').addClass('mediumscreen');$('.post-related-items').addClass('margin-mediumscreen');$('.mediumscreen').removeClass('expand-icon').addClass('narrow-icon');					
 				}
 				else
 				{
 					mediumscreen = false;
 $.cookie('wideVideo',false);
-$video_parent.removeClass('player-mediumscreen');$('.post-body').removeClass('no-margin');$('.playlist').removeClass('playlist-margin-mediumscreen');$(".post-related-items").removeClass('margin-mediumscreen');$('.mediumscreen').removeClass('narrow-icon').addClass('expand-icon');$('.warning').removeClass('mediumscreen')					
+$video_parent.removeClass('player-mediumscreen');$('.post-body').removeClass('no-margin');$('.playlist').removeClass('playlist-margin-mediumscreen');$('.warning').removeClass('mediumscreen');$('.post-related-items').removeClass('margin-mediumscreen');$('.mediumscreen').removeClass('narrow-icon').addClass('expand-icon');				
 				}
 
 			});if($.cookie('wideVideo')=='true'){$('.expand-icon').click()}else{$('.narrow-icon').click()};
