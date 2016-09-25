@@ -1,83 +1,4 @@
-//warning adult content
-$('.accept').click(function(){$.cookie('warning',true);$('.warning').empty();$('.pause-icon').click();$('video').attr('autoplay','autoplay');$('.warning').css({'z-index':'0','background':'transparent'})});if($.cookie('warning')=='true'){$('.accept').click()}else{$('.a-999').click()};
-//add button
-$('.post-item .add').click(function(){
-$('.post-item .add').addClass('opacity');$('.add-playlist-icon').css('opacity','1').attr('title','Đã thêm vào xem sau');$('.fs-watch-later').css('opacity','1');$('.share').removeClass('opacity');$('.report').removeClass('opacity');$('.add-box').addClass('show').removeClass('hide');$('.share-box').addClass('hide').removeClass('show');$('.report-box').addClass('hide').removeClass('show');});
-$('.close-add').click(function(){$('.post-item .add').removeClass('opacity');$('.add-box').addClass('hide').removeClass('show');});
-$('.post-related-items .item_add').click(function(){$('.add-box').addClass('show').removeClass('hide')});
-//share button
-$('.share').click(function(){
-$('.share').addClass('opacity');$('.post-item .add').removeClass('opacity');$('.report').removeClass('opacity');
-$('.share-box').addClass('show').removeClass('hide');
-$('.add-box').addClass('hide').removeClass('show');
-$('.report-box').addClass('hide').removeClass('show');
-});
-$('.close-share').click(function(){
-$('.share').removeClass('opacity');
-$('.share-box').addClass('hide').removeClass('show');
-});
-//sub-share box
-$('.share-this').click(function(){
-$('.share-this').addClass('active').removeClass('normal');
-$('.embed-this').addClass('normal').removeClass('active');
-$('.share-this-box').addClass('show').removeClass('hide');
-$('.embed-this-box').addClass('hide').removeClass('show');
-});
-$('.embed-this').click(function(){
-$('.embed-this').addClass('active').removeClass('normal');
-$('.share-this').addClass('normal').removeClass('active');
-$('.embed-this-box').addClass('show').removeClass('hide');
-$('.share-this-box').addClass('hide').removeClass('show');
-});
-//report button
-$('.report').click(function(){
-$('.report').addClass('opacity');$('.post-item .add').removeClass('opacity');$('.share').removeClass('opacity');
-$('.report-box').addClass('show').removeClass('hide');
-$('.add-box').addClass('hide').removeClass('show');
-$('.share-box').addClass('hide').removeClass('show');
-});
-$('.close-report').click(function(){
-$('.report').removeClass('opacity');
-$('.report-box').addClass('hide').removeClass('show');
-});
-//fullscreen: watch later + share
-$('.fs-watch-later').click(function(){
-$('.fs-watch-later').css('opacity','1').attr('title','Đã thêm vào xem sau');$('.add-playlist-icon').css('opacity','1').attr('title','Đã thêm vào xem sau');$('.add').addClass('opacity');$('.click-to-add').css('opacity','1');$('.add-box').removeClass('hide').addClass('show');
-});
-$('.fs-share').click(function(){
-$('.fullscreen-top').removeClass('show').addClass('hide');$('.v-control').addClass('hide').removeClass('show');$('.fs-share').removeClass('show').addClass('hide');$('.fs-share-box').css({'opacity':'1','z-index':'9999'});
-});
-$('.close-fs-share-box').click(function(){
-$('.fullscreen-top').removeClass('hide').addClass('show');$('.v-control').removeClass('hide').addClass('show');$('.fs-share').removeClass('hide').addClass('show');$('.fs-share-box').css({'opacity':'0','z-index':'1'});
-});
-//setting video
-$('.setting').click(function(){
-$('.setting').removeClass('show').addClass('hide');$('.remove-setting').removeClass('hide').addClass('show');
-$('.setting-box').removeClass('hide').addClass('show');$('.setting-box').addClass('setting-box-transform');
-});
-$('.remove-setting').click(function(){
-$('.remove-setting').removeClass('show').addClass('hide');$('.setting').removeClass('hide').addClass('show');
-$('.setting-box').removeClass('show').addClass('hide');$('.setting-box').removeClass('setting-box-transform');
-});
-$('.speed-layer').click(function(){
-$('.speed-layer-box').removeClass('hide').addClass('show');$('.first-layer').removeClass('show').addClass('hide');
-$('.setting-box').removeClass('setting-box-transform').addClass('speed-layer-transform');
-});
-$('.speed-layer-return').click(function(){
-$('.speed-layer-box').removeClass('show').addClass('hide');$('.first-layer').removeClass('hide').addClass('show');
-$('.setting-box').addClass('setting-box-transform').removeClass('speed-layer-transform');
-});
-//on hover show next and previous videos
-$('.previous-icon').mouseover(function(){$('.next-video').hide();$('.previous-video').show();$('.blog-pager').addClass('mb2');$('.previous-video').addClass('show-preview')}).mouseout(function(){$('.blog-pager').removeClass('mb2');$('.previous-video').removeClass('show-preview')});
-$('.next-icon').mouseover(function(){$('.previous-video').hide();$('.next-video').show();$('.blog-pager').addClass('mb2');$('.next-video').addClass('show-preview')}).mouseout(function(){$('.blog-pager').removeClass('mb2');$('.next-video').removeClass('show-preview')});
-//video fullscreen
-$('.fullscreen-icon').click(function(){$('.post-header').removeClass('player-mediumscreen');});
-//iframe mediumscreen
-$('.expand-iframe').click(function(){$.cookie('wideIframe',true);$('.expand-iframe').addClass('hide').removeClass('show');$('.narrow-iframe').addClass('show').removeClass('hide');$('.expand-narrow-iframe').addClass('opacity');$('.warning').addClass('mediumscreen');$('.post-iframe').addClass('player-mediumscreen');$('.post-related-items').addClass('margin-mediumscreen');$('.post-body').addClass('no-margin')});$('.narrow-iframe').click(function(){$.cookie('wideIframe',false);$('.narrow-iframe').addClass('hide').removeClass('show');$('.expand-iframe').addClass('show').removeClass('hide');$('.expand-narrow-iframe').removeClass('opacity');$('.warning').removeClass('mediumscreen');$('.post-iframe').removeClass('player-mediumscreen');$('.post-related-items').removeClass('margin-mediumscreen');$('.post-body').removeClass('no-margin')});if($.cookie('wideIframe')=='true'){$('.expand-iframe').click()}else{$('.narrow-iframe').click()};
-//show more or less
-$('.more').click(function(){$(this).css('display','none');$('.less').css('display','block');$('.post-detail .description').addClass('more-letter')});$('.less').click(function(){$(this).css('display','none');$('.more').css('display','block');$('.post-detail .description').removeClass('more-letter')});
-
-//next and previous video on hover. In these you can use [title], [date], [datetime], [title], [img], [thumburl], [summary]
+//NEXT AND PREVIOUS VIDEOS ON HOVER ICONS. WE CAN USE [title], [date], [datetime], [title], [img], [thumburl], [summary]
 var maxSummaryLength = 180;
 var previousVideo = '<div class="previous-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TRƯỚC</div><div class="title">[title]</div></div><!-- description --></div>';
 var nextVideo = '<div class="next-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TIẾP THEO</div><div class="title">[title]</div></div><!-- description --></div>';
@@ -140,7 +61,8 @@ $(window).load(function() {
       });
   }, 250);
 });
-//if current video ends, show autoplay-is-on
+
+//IF CURRENT VIDEO ENDS, SHOW AUTOPLAY-IS-ON
 var ifcurrentvideoendsshowpreviousVideo = '<div class="upprevious"><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upprevious-top"><span class="upprevious-header">Trước</span><span class="upprevious-title">[title]</span><span class="upprevious-author">[author]</span></span><a href="[url]" class="upprevious-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg></a></div>';
 var ifcurrentvideoendsshownextVideo = '<div class="upnext"><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upnext-top"><span class="upnext-header">Tiếp theo</span><span class="upnext-title">[title]</span><span class="upnext-author">[author]</span></span><a href="[url]" class="upnext-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" display="none" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg></a></div>';
 function endgetThumb(entry, def) {
@@ -206,7 +128,8 @@ $(window).load(function() {
       });
   }, 250);
 });
-//html5 player
+
+//HTML5 PLAYER
 (function($)
 {
 	$.fn.video = function(options)
