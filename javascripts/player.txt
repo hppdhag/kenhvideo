@@ -1,4 +1,3 @@
-﻿$(document).ready(function(){
 //warning adult content
 $('.accept').click(function(){$.cookie('warning',true);$('.warning').empty();$('.pause-icon').click();$('video').attr('autoplay','autoplay');$('.warning').css({'z-index':'0','background':'transparent'})});if($.cookie('warning')=='true'){$('.accept').click()}else{$('.a-999').click()};
 //add button
@@ -77,7 +76,7 @@ $('.fullscreen-icon').click(function(){$('.post-header').removeClass('player-med
 $('.expand-iframe').click(function(){$.cookie('wideIframe',true);$('.expand-iframe').addClass('hide').removeClass('show');$('.narrow-iframe').addClass('show').removeClass('hide');$('.expand-narrow-iframe').addClass('opacity');$('.warning').addClass('mediumscreen');$('.post-iframe').addClass('player-mediumscreen');$('.post-related-items').addClass('margin-mediumscreen');$('.post-body').addClass('no-margin')});$('.narrow-iframe').click(function(){$.cookie('wideIframe',false);$('.narrow-iframe').addClass('hide').removeClass('show');$('.expand-iframe').addClass('show').removeClass('hide');$('.expand-narrow-iframe').removeClass('opacity');$('.warning').removeClass('mediumscreen');$('.post-iframe').removeClass('player-mediumscreen');$('.post-related-items').removeClass('margin-mediumscreen');$('.post-body').removeClass('no-margin')});if($.cookie('wideIframe')=='true'){$('.expand-iframe').click()}else{$('.narrow-iframe').click()};
 //show more or less
 $('.more').click(function(){$(this).css('display','none');$('.less').css('display','block');$('.post-detail .description').addClass('more-letter')});$('.less').click(function(){$(this).css('display','none');$('.more').css('display','block');$('.post-detail .description').removeClass('more-letter')});
-});
+
 //next and previous video on hover. In these you can use [title], [date], [datetime], [title], [img], [thumburl], [summary]
 var maxSummaryLength = 180;
 var previousVideo = '<div class="previous-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TRƯỚC</div><div class="title">[title]</div></div><!-- description --></div>';
