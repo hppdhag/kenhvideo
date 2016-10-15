@@ -22,7 +22,7 @@ $('.tab2 .channel-items').spoiler({ajaxMode:true,elementHide:'.channel-item'});
 $('.tab3 .channel-items').spoiler({ajaxMode:true,elementHide:'.channel-item'});
 $('.tab4 .channel-items').spoiler({ajaxMode:true,elementHide:'.channel-item'});$('.tab4 .channel-items').spoiler({ajaxMode:true,elementHide:'.from-second',numberHide:20,ajaxModeNumber:20});
 //SHOW BAR ON SCROLLING
-$(window).bind('scroll',function(){if($(window).scrollTop()>287){$('.home-text').hide();$('.tabs-area').addClass('tab-fixer');$('.tabs .hide').removeClass('hide')}else{$('.home-text').show();$('.tabs-area').removeClass('tab-fixer');$('.tabs .user-thumb').addClass('hide');$('.tabs .user-name').addClass('hide')}});
+if(document.documentElement.clientWidth>640){$(window).bind('scroll',function(){if($(window).scrollTop()>287){$('.home-text').hide();$('.tabs-area').addClass('tab-fixer');$('.tabs .hide').removeClass('hide')}else{$('.home-text').show();$('.tabs-area').removeClass('tab-fixer');$('.tabs .user-thumb').addClass('hide');$('.tabs .user-name').addClass('hide')}});}
 //TAB VIEW MODE: GRID OR LIST
 $('#tab2 .list').click(function(){$('#tab2').addClass('list-layer');$('#tab2 .item-description').removeClass('hide').addClass('show');$('#tab2 .grid').removeClass('hide').addClass('show');$('#tab2 .list').removeClass('show').addClass('hide');});
 $('#tab3 .list').click(function(){$('#tab3').addClass('list-layer');$('#tab3 .item-description').removeClass('hide').addClass('show');$('#tab3 .grid').removeClass('hide').addClass('show');$('#tab3 .list').removeClass('show').addClass('hide');});
