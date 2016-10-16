@@ -1,5 +1,5 @@
-if(document.documentElement.clientWidth>1000){
 //next and previous video on hover. In these you can use [title], [date], [datetime], [title], [img], [thumburl], [summary]
+if(document.documentElement.clientWidth>1000){
 var maxSummaryLength = 180;
 var defaultThumburl = "http://2.bp.blogspot.com/-mQjGZeHYX9g/VqhEZzEMCuI/AAAAAAABPiI/PIi_AuaxM8k/no-thumbnail.jpg";
 var previousVideo = '<div class="previous-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TRƯỚC</div><div class="title">[title]</div></div><!-- description --></div>';
@@ -60,7 +60,9 @@ $(window).load(function() {
       });
   }, 250);
 });
+}
 //if current video ends, show autoplay-is-on
+if(document.documentElement.clientWidth>1000){
 var ifcurrentvideoendsshowpreviousVideo = '<div class="upprevious"><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upprevious-top"><span class="upprevious-header">Trước</span><span class="upprevious-title">[title]</span><span class="upprevious-author">[author]</span></span><a href="[url]" class="upprevious-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg></a></div>';
 var ifcurrentvideoendsshownextVideo = '<div class="upnext"><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upnext-top"><span class="upnext-header">Tiếp theo</span><span class="upnext-title">[title]</span><span class="upnext-author">[author]</span></span><a href="[url]" class="upnext-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" display="none" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg></a></div>';
 function endgetThumb(entry, def) {
