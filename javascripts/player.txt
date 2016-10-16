@@ -376,7 +376,7 @@ $('.autoplay-checkbox-on-off').removeClass('turn-on-autoplay').addClass('turn-of
 });
 }
 if(document.documentElement.clientWidth<1000){
-$('.post-video a').removeAttr('href');$('.post-video a img').addClass('imgEnd');$('<div class="replayIcon"></div>').insertAfter('.post-video a img');$('.replayIcon').click(function(){$('.post-video a img').removeClass('imgEnd');$('video').attr({'loop':'true'});$video[0].play();});
+$('.post-video a').removeAttr('href');$('.post-video a img').addClass('imgEnd');$('<div class="replayIcon"></div>').insertAfter('.post-video a img');$('.post-video a').click(function(){$('.post-video a img').removeClass('imgEnd');$('.replayIcon').remove();$('video').attr({'loop':'true'});$video[0].play();});
 }
 });//end video
 
