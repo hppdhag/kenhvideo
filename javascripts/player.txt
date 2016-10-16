@@ -311,6 +311,7 @@ volumechange: null
 				}
 			});
 
+if(document.documentElement.clientWidth>1000){
 //SPEED CHANGE: 0.25 - 0.5 - 1 - 1.25 - 1.5 - 2
 $('.speed-025').on('click',function(){speed(this,0.25);$('.speed-05').removeClass('selected');$('.speed-1').removeClass('selected');$('.speed-125').removeClass('selected');$('.speed-15').removeClass('selected');$('.speed-2').removeClass('selected');$('.speed_05').removeClass('show').addClass('hide');$('.speed_1').removeClass('show').addClass('hide');$('.speed_125').removeClass('show').addClass('hide');$('.speed_15').removeClass('show').addClass('hide');$('.speed_2').removeClass('show').addClass('hide');$('.speed_025').removeClass('hide').addClass('show')});
 $('.speed-05').on('click',function(){speed(this,0.5);$('.speed-025').removeClass('selected');$('.speed-1').removeClass('selected');$('.speed-125').removeClass('selected');$('.speed-15').removeClass('selected');$('.speed-2').removeClass('selected');$('.speed_025').removeClass('show').addClass('hide');$('.speed_1').removeClass('show').addClass('hide');$('.speed_125').removeClass('show').addClass('hide');$('.speed_15').removeClass('show').addClass('hide');$('.speed_2').removeClass('show').addClass('hide');$('.speed_05').removeClass('hide').addClass('show')});
@@ -331,6 +332,7 @@ $video[0].play();
 			});
 
 $video.on('playing',function(){$video[0].play;
+if(document.documentElement.clientWidth>1000){
 $('.autoplay-is-on').removeClass('show').addClass('hide');$('.video-endscreen-bg').removeClass('show').addClass('hide');
 $('.autoplay-is-on').css({'visibility':'hidden'});$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'99'});$('.fullscreen-top').css({'height':'54px','line-height':'54px'});$('.setting').click(function(){$video[0].pause();$('.v-control').css('opacity','1')});$('.remove-setting').click(function(){$('.v-control').css('opacity','0')});
 $('.fs-share').click(function(){$video[0].pause()});$('.close-fs-share-box').click(function(){$video[0].play()});
@@ -342,6 +344,7 @@ $('.autoplay-checkbox-on-off').removeClass('turn-off-autoplay').addClass('turn-o
 $('.turn-on-autoplay').click(function(){
 $('.autoplay-checkbox-on-off').removeClass('turn-on-autoplay').addClass('turn-off-autoplay');$('.autoplay-is-on').css({'z-index':'99'});$('.video-endscreen-bg').css({'z-index':'97'})
 });
+}
 			});
 
 			$video.on('timeupdate', timeupdate);
@@ -412,7 +415,7 @@ $('.close-fs-share-box').click(function(){$video[0].pause()});
 						{
 							$(document).on('mousemove touchmove', seeker_move);
 						}
-						displayPreview(clientX);
+						if(document.documentElement.clientWidth>1000){displayPreview(clientX)};
 					}
 				}
 			});
@@ -719,12 +722,12 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 
 			left     = Math.max(options.preview.width / 2, left);
 			left     = Math.min($video_parent.find('.seeker').width() - (options.preview.width / 2), left);
-			$video_parent.find('.seeker').append('<div class="preview" style="left: ' + (left - (options.preview.width / 2) - 3) + 'px;">' +
+			if(document.documentElement.clientWidth>1000){$video_parent.find('.seeker').append('<div class="preview" style="left: ' + (left - (options.preview.width / 2) - 3) + 'px;">' +
 				'			<div class="preview-img">' +
 				'				<span class="img" style="width: ' + options.preview.width + 'px; height: ' + options.preview.height + 'px; background: url(\'' + sprite + '\') no-repeat -' + (options.preview.width * factor) + 'px 0px;"></span>' +
 				'				<span class="preview-time">' + secondsToTime(seconds) + '</span>' +
 				'			</div>' +
-				'		</div>');
+				'		</div>')};
 		}
 
 		function getClientX(e)
