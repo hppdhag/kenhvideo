@@ -1,5 +1,5 @@
+if(document.documentElement.clientWidth>1000){
 //NEXT AND PREVIOUS VIDEOS ON HOVER ICONS. WE CAN USE [title], [date], [datetime], [title], [img], [thumburl], [summary]
-if(document.documentElement.clientWidth<1000){
 var maxSummaryLength = 180;
 var previousVideo = '<div class="previous-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TRƯỚC</div><div class="title">[title]</div></div><!-- description --></div>';
 var nextVideo = '<div class="next-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TIẾP THEO</div><div class="title">[title]</div></div><!-- description --></div>';
@@ -694,7 +694,7 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 				'				<span class="img" style="width: ' + options.preview.width + 'px; height: ' + options.preview.height + 'px; background: url(\'' + sprite + '\') no-repeat -' + (options.preview.width * factor) + 'px 0px;"></span>' +
 				'				<span class="preview-time">' + secondsToTime(seconds) + '</span>' +
 				'			</div>' +
-				'		</div>');}
+				'		</div>')};
 		}
 }
 
@@ -762,6 +762,8 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 	};
 	$.fn.video.defaults = { };
 })(jQuery);
+
+if(document.documentElement.clientWidth>1000){
 //TURN OFF AUTOPLAY: IF VIDEO ENDS SHOW RELATED POSTS
 var IfVideoEndShowRelatedTitles=new Array();var IfVideoEndShowRelatedUrls=new Array();var IfVideoEndShowRelatedSummaries=new Array();var IfVideoEndShowRelatedThumbs=new Array();var IfVideoEndShowRelatedCategories=new Array();var IfVideoEndShowRelatedAuthor=new Array();var IfVideoEndShowRelatedAuthorUrl=new Array();var IfVideoEndShowRelatedIds=new Array();var IfVideoEndShowRelatedTitlesNum=0;var IfVideoEndShowRelatedPostNum=12; var IfVideoEndShowRelatedMaxNum=12;
 function IfVideoEndReadPostLabels(json){var entry,postimg,postcontent,cate,name;for(var i=0;i<json.feed.entry.length;i++){entry=json.feed.entry[i];if(i==json.feed.entry.length){break}IfVideoEndShowRelatedTitles[IfVideoEndShowRelatedTitlesNum]=entry.title.$t;postcontent='';if('content' in entry){postcontent=entry.content.$t}else if('summary' in entry){postcontent=entry.summary.$t}IfVideoEndShowRelatedSummaries[IfVideoEndShowRelatedTitlesNum]=IfVideoEndRemoveTags(postcontent,IfVideoEndShowRelatedMaxNum);if('media$thumbnail' in entry){postimg=entry.media$thumbnail.url.replace('1.bp.blogspot','lh4.googleusercontent').replace('2.bp.blogspot','lh4.googleusercontent').replace('3.bp.blogspot','lh4.googleusercontent').replace('4.bp.blogspot','lh4.googleusercontent').replace('default','0').replace('/s72-c','')}else{postimg=noImageUrl}IfVideoEndShowRelatedThumbs[IfVideoEndShowRelatedTitlesNum]=postimg;for(var k=0;k<entry.link.length;k++){if(entry.link[k].rel=='alternate'){IfVideoEndShowRelatedUrls[IfVideoEndShowRelatedTitlesNum]=entry.link[k].href.replace('#comment-form','');break}}cate=entry.category;if(cate){for(var k=0;k<entry.category.length;k++){if(entry.category[k].term=='iframe'){IfVideoEndShowRelatedCategories[IfVideoEndShowRelatedTitlesNum]=''+entry.category[0].term+''}else if(entry.category[k].term=='trả tiền'){IfVideoEndShowRelatedCategories[IfVideoEndShowRelatedTitlesNum]=''+entry.category[0].term+''}else if(entry.category[k].term=='video'){IfVideoEndShowRelatedCategories[IfVideoEndShowRelatedTitlesNum]=''+entry.category[0].term+''}else if(entry.category[k].term=='playlist'){IfVideoEndShowRelatedCategories[IfVideoEndShowRelatedTitlesNum] = ''+entry.category[0].term+''}
@@ -773,6 +775,7 @@ IfVideoEndShowRelatedTitles[i]=IfVideoEndShowRelatedTitles[index];IfVideoEndShow
 output='<a class="videowall-still" href="'+IfVideoEndShowRelatedUrls[r]+'"><div class="videowall-still-image" style="background-image:url('+IfVideoEndShowRelatedThumbs[r]+')"></div><span class="videowall-still-info"><span class="videowall-still-info-bg"><span class="videowall-still-info-content"><span class="videowall-still-info-title">'+IfVideoEndShowRelatedTitles[r]+'</span><span class="videowall-still-info-author">'+IfVideoEndShowRelatedAuthor[r]+'</span><span class="videowall-still-info-duration">'+IfVideoEndShowRelatedCategories[r]+'</span></span></span></span></a>';document.write(output);somePosts++;if (somePosts==IfVideoEndShowRelatedPostNum){break}}if(r<IfVideoEndShowRelatedTitles.length-1){r++}else{r=0}if(r==relsump){break}}}
 function IfVideoEndRemoveTags(text,length){var pSummary=text.split("<");for(var i=0;i<pSummary.length;i++){if(pSummary[i].indexOf(">")!=-1){pSummary[i]=pSummary[i].substring(pSummary[i].indexOf(">")+1,pSummary[i].length)}}pSummary=pSummary.join("");pSummary=pSummary.substring(0,length-1);return pSummary}
 function IfVideoEndContains(a,e){for(var j=0;j<a.length;j++)if(a[j]==e) return true;return false}
+}
 
 //SIDEBAR RELATED POSTS
 var SidebarRelatedTitles=new Array();var SidebarRelatedUrls=new Array();var SidebarRelatedSummaries=new Array();var SidebarRelatedThumbs=new Array();var SidebarRelatedCategories=new Array();var SidebarRelatedAuthor=new Array();var SidebarRelatedAuthorUrl=new Array();var SidebarRelatedAuthorChannelUrl=new Array();var SidebarRelatedIds=new Array();var SidebarRelatedTitlesNum=0;var SidebarRelatedPostsNum=20; var SidebarRelatedMaxNum=20;
