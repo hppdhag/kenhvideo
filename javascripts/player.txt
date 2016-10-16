@@ -334,8 +334,8 @@ $('.autoplay-checkbox-on-off').removeClass('turn-off-autoplay').addClass('turn-o
 });
 $('.turn-on-autoplay').click(function(){
 $('.autoplay-checkbox-on-off').removeClass('turn-on-autoplay').addClass('turn-off-autoplay');$('.autoplay-is-on').css({'z-index':'99'});$('.video-endscreen-bg').css({'z-index':'97'})
-}
 });
+}
 			});
 
 			$video.on('timeupdate', timeupdate);
