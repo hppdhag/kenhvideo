@@ -1,4 +1,5 @@
 //NEXT AND PREVIOUS VIDEOS ON HOVER ICONS. WE CAN USE [title], [date], [datetime], [title], [img], [thumburl], [summary]
+if(document.documentElement.clientWidth<1000){
 var maxSummaryLength = 180;
 var previousVideo = '<div class="previous-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TRƯỚC</div><div class="title">[title]</div></div><!-- description --></div>';
 var nextVideo = '<div class="next-video"><div class="thumbnail"><span class="label">[label]</span><img src="[thumburl]" alt="[title]"/></div><!-- thumbnail --><div class="description"><div class="header">TIẾP THEO</div><div class="title">[title]</div></div><!-- description --></div>';
@@ -128,6 +129,7 @@ $(window).load(function() {
       });
   }, 250);
 });
+}
 
 //HTML5 PLAYER
 (function($)
@@ -670,6 +672,7 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 			$video.trigger('volumechange');
 		});
 
+if(document.documentElement.clientWidth<1000){
 		function displayPreview(position)
 		{
 			$video_parent.find('.preview').remove();
@@ -690,6 +693,7 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 				'			</div>' +
 				'		</div>');
 		}
+}
 
 		function getClientX(e)
 		{
