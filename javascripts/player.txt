@@ -406,7 +406,7 @@ $('.close-fs-share-box').click(function(){$video[0].pause()});
 						{
 							$(document).on('mousemove touchmove', seeker_move);
 						}
-						if(document.documentElement.clientWidth>1000){displayPreview(clientX);}
+						displayPreview(clientX);
 					}
 				}
 			});
@@ -689,12 +689,12 @@ $('.close-playlist-icon').removeClass('show').addClass('hide');$('.add-playlist-
 
 			left     = Math.max(options.preview.width / 2, left);
 			left     = Math.min($video_parent.find('.seeker').width() - (options.preview.width / 2), left);
-			if(document.documentElement.clientWidth>1000){$video_parent.find('.seeker').append('<div class="preview" style="left: ' + (left - (options.preview.width / 2) - 3) + 'px;">' +
+			$video_parent.find('.seeker').append('<div class="preview" style="left: ' + (left - (options.preview.width / 2) - 3) + 'px;">' +
 				'			<div class="preview-img">' +
 				'				<span class="img" style="width: ' + options.preview.width + 'px; height: ' + options.preview.height + 'px; background: url(\'' + sprite + '\') no-repeat -' + (options.preview.width * factor) + 'px 0px;"></span>' +
 				'				<span class="preview-time">' + secondsToTime(seconds) + '</span>' +
 				'			</div>' +
-				'		</div>')};
+				'		</div>');
 		}
 }
 
