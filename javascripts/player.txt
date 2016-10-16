@@ -218,7 +218,6 @@ this.mediumscreenToggle = function()
 			function load()
 			{
 
-
 				if (options.preview.sprites.length > 0)
 				{
 
@@ -407,7 +406,7 @@ $('.close-fs-share-box').click(function(){$video[0].pause()});
 						{
 							$(document).on('mousemove touchmove', seeker_move);
 						}
-						if(document.documentElement.clientWidth<1000){displayPreview(clientX);}
+						if(document.documentElement.clientWidth>1000){displayPreview(clientX);}
 					}
 				}
 			});
