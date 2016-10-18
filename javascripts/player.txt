@@ -366,7 +366,7 @@ $('.autoplay-is-on').css({'visibility':'visible'});$('.svg-autoplay-ring').css({
 
 //AUTOPLAY MODE: NEXT-PREV ITEMS OR RELATED ITEMS
 if($.cookie('autoplayMode')=='true'){$('.turn-on-autoplay').click(function(){
-$('.autoplay-on-url').attr({'content':'10;URL=" + $('.newer-link').attr('href') + "','http-equiv':'refresh');
+$('.autoplay-on-url').attr({'content':'10;URL=" + $('.newer-link').attr('href') + "','http-equiv':'refresh'});
 })}
 else{$('.turn-off-autoplay').click(function(){
 $('.autoplay-on-url').removeAttr();
