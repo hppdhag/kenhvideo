@@ -383,14 +383,12 @@ $('.post-video a').removeAttr('href');$('.post-video a img').addClass('imgEnd');
 $video[0].pause();$video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');
 $('.big-pause').removeClass('hide').addClass('show');$('.big-play').removeClass('show').addClass('hide');
 $('.post-video').addClass('opacity');
-});
 				}
 				else
 				{play:true;
 $video[0].play();$video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon');
 $('.big-play').removeClass('hide').addClass('show');$('.big-pause').removeClass('show').addClass('hide');
 $('.post-video').removeClass('opacity');
-});
 				}
 
 			});
