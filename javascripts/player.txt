@@ -338,7 +338,7 @@ $video[0].play();
 
 $video.on('playing',function(){$video[0].play;
 if(document.documentElement.clientWidth>1000){
-$('.autoplay-is-on').removeClass('show').addClass('hide');$('.video-endscreen-bg').removeClass('show').addClass('hide');$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'99'});$('.setting').click(function(){$('.v-control').css('opacity','1')});$('.remove-setting').click(function(){$('.v-control').css('opacity','0')});
+$('.autoplay-is-on').removeClass('show').addClass('hide');$('.video-endscreen-bg').removeClass('show').addClass('hide');$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'98'});$('.setting').click(function(){$('.v-control').css('opacity','1')});$('.remove-setting').click(function(){$('.v-control').css('opacity','0')});
 $('.play-pause').removeClass('hide').addClass('show');$('.replay-icon').removeClass('show').addClass('hide');
 
 //AUTOPLAY MODE: NEXT-PREV ITEMS OR RELATED ITEMS
