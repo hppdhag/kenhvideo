@@ -361,7 +361,7 @@ $('.play-pause').removeClass('hide').addClass('show');$('.replay-icon').removeCl
 
 			$video.on('ended',function(){$video[0].pause;
 if(document.documentElement.clientWidth>1000){   
-$('.redirect-video-url').attr('content','10;url=' + $('.redirect-video-url').attr('content'));
+$('.redirect-video-url').attr({'http-equiv':'refresh','content':'10;url=' + $('.redirect-video-url').attr('content')});
 $('.autoplay-is-on').removeClass('hide').addClass('show');$('.video-endscreen-bg').removeClass('hide').addClass('show');
 $('.autoplay-is-on').css({'visibility':'visible'});$('.svg-autoplay-ring').css({'display':'block','stroke':'white','stroke-width':'4','stroke-dashoffset':'0','stroke-dasharray':'293','animation':'progress-anim 10s ease'});$('.video-endscreen-bg').css({'visibility':'visible'});$('video').css({'z-index':'1'});$('.v-control').css('opacity','1');$('.play-pause').removeClass('show').addClass('hide');$('.replay-icon').removeClass('hide').addClass('show');$('.replay-icon').click(function(){$video[0].play();});
 if($.cookie('autoplayMode')=='true'){$('.turn-on-autoplay').click();$('.autoplay-is-on').addClass('z-index');$('.video-endscreen-bg,.fullscreen-top').removeClass('z-index');}else{$('.turn-off-autoplay').click();$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');$('.autoplay-is-on').removeClass('z-index');};
