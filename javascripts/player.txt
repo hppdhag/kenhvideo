@@ -314,7 +314,7 @@ function endsetLink(selector, template, defthumb, entry) {
   var date = entry.published.$t.match(/\d+/g);
   date = new Date(date[0],date[1]-1,date[2],date[3],date[4],date[5]); // convert iso
   var thumburl = endgetThumb(entry, defthumb);
-  var url = $(selector).attr("href");
+  var url = $(selector).attr("href");var url = $(selector).attr("content");
   var summary = $("<span>"+entry.content.$t+"</span>").text();
 var label = $("<span>"+entry.category[0].term+"</span>").text();
 var author = $("<span>"+entry.author[0].name.$t+"</span>").text();
