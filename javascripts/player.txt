@@ -62,6 +62,71 @@ $(window).load(function() {
 });
 }
 
+//AUTOPLAY MODE => TURN ON. In these you can use [title], [date], [datetime], [title], [img], [thumburl], [summary]
+if(document.documentElement.clientWidth>1000){
+var ifcurrentvideoendsshowpreviousVideo = '<div class="upprevious"><div class="cancel-autoplay calcel-2"></div><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upprevious-top"><span class="upprevious-header">Trước</span><span class="upprevious-title">[title]</span><span class="upprevious-author">[author]</span></span><a href="[url]" class="upprevious-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg><div class="cancel-autoplay cancel-1">Hủy</div></a></div>';
+var ifcurrentvideoendsshownextVideo = '<meta class="redirect-video-url" http-equiv="refresh" content="[redirect]"/><div class="upnext"><div class="cancel-autoplay calcel-2"></div><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upnext-top"><span class="upnext-header">Tiếp theo</span><span class="upnext-title">[title]</span><span class="upnext-author">[author]</span></span><a href="[url]" class="upnext-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" display="none" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg><div class="cancel-autoplay cancel-1">Hủy</div></a></div>';
+function endgetThumb(entry, def) {
+    var thumburl = def;
+    try { thumburl = entry.media$thumbnail.url.replace("/s72-c","")}
+    catch(error) {
+        d = $("<span>"+entry.content.$t+"</span>").find("img").attr("src");
+        if(d)
+            thumburl = d;
+        else
+            thumburl = def;
+    }
+    return thumburl;
+}
+function endsetLink(selector, template, defthumb, entry) {
+  var date = entry.published.$t.match(/\d+/g);
+  date = new Date(date[0],date[1]-1,date[2],date[3],date[4],date[5]); // convert iso
+  var thumburl = endgetThumb(entry, defthumb);
+  var url = $(selector).attr("href");var redirect = $(selector).attr("content");
+  var summary = $("<span>"+entry.content.$t+"</span>").text();
+var label = $("<span>"+entry.category[0].term+"</span>").text();
+var author = $("<span>"+entry.author[0].name.$t+"</span>").text();
+
+  if(summary.length > maxSummaryLength) {
+    summary = summary.substring(0, maxSummaryLength);
+    var indexBreak = summary.lastIndexOf(" ");
+    summary = summary.substring(0, indexBreak)+"...";
+  }
+
+  var htm = template.replace(/\[title\]/g, entry.title.$t);
+  htm = htm.replace(/\[date\]/g, date.toLocaleDateString());
+  htm = htm.replace(/\[datetime\]/g, date.toLocaleString());
+  htm = htm.replace(/\[summary\]/g, summary);htm = htm.replace(/\[label\]/g, label);htm = htm.replace(/\[author\]/g, author);
+  htm = htm.replace(/\[thumburl\]/g, thumburl);
+  htm = htm.replace(/\[url\]/g, url);htm = htm.replace(/\[redirect\]/g, redirect);
+  var imghtm = "";
+  if(thumburl != "")
+    imghtm = '<img src="'+thumburl+'">';
+  htm = htm.replace(/\[img\]/g, imghtm);
+  $(selector).replaceWith(htm);
+}
+function EndPreviousUrl(entry) { endsetLink("a.previous-link", ifcurrentvideoendsshowpreviousVideo, defaultThumburl, entry);}
+function EndNextUrl(entry) { endsetLink("a.next-link", ifcurrentvideoendsshownextVideo, defaultThumburl, entry); }
+$(window).load(function() {
+  window.setTimeout(function() {
+    var timestamp = $(".published").attr("title");
+    if(timestamp && timestamp != "")
+      $.getJSON("/feeds/posts/default?alt=json-in-script&published-min="+encodeURIComponent(timestamp)+"&max-results=0&callback=?", function(resp) {
+        var postindex = parseInt(resp.feed.openSearch$totalResults.$t);
+        if(postindex > 1)
+          $.getJSON("/feeds/posts/default?alt=json-in-script&start-index="+(postindex-1)+"&max-results=3&callback=?", function(resp) {
+            EndNextUrl(resp.feed.entry[0]);
+            var postcount = parseInt(resp.feed.openSearch$totalResults.$t);
+            var startindex = parseInt(resp.feed.openSearch$startIndex.$t);
+            if(postcount - startindex > 1) EndPreviousUrl(resp.feed.entry[2]);
+          });
+        else
+          $.getJSON("/feeds/posts/default?alt=json-in-script&start-index=2&max-results=1&callback=?", function(resp) { EndPreviousUrl(resp.feed.entry[0]); });
+      });
+  }, 250);
+});
+}
+
 //html5 player
 (function($)
 {
@@ -295,69 +360,8 @@ $('.play-pause').removeClass('hide').addClass('show');$('.replay-icon').removeCl
 
 
 			$video.on('ended',function(){$video[0].pause;
-if(document.documentElement.clientWidth>1000){    
-var ifcurrentvideoendsshowpreviousVideo = '<div class="upprevious"><div class="cancel-autoplay calcel-2"></div><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upprevious-top"><span class="upprevious-header">Trước</span><span class="upprevious-title">[title]</span><span class="upprevious-author">[author]</span></span><a href="[url]" class="upprevious-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg><div class="cancel-autoplay cancel-1">Hủy</div></a></div>';
-var ifcurrentvideoendsshownextVideo = '<meta http-equiv="refresh" content="10;url=[redirect]"/><div class="upnext"><div class="cancel-autoplay calcel-2"></div><div class="thumbnail-overlay-image" style="background-image:url([thumburl])"></div><div class="thumbnail-overlay-curtain"></div><span class="upnext-top"><span class="upnext-header">Tiếp theo</span><span class="upnext-title">[title]</span><span class="upnext-author">[author]</span></span><a href="[url]" class="upnext-autoplay-icon"><svg height="100%" version="1.1" viewBox="0 0 98 98" width="100%"><circle class="svg-autoplay-circle" cx="49" cy="49" fill="#000" fill-opacity="0.8" r="48"></circle><circle class="svg-autoplay-ring" display="none" cx="-49" cy="49" fill-opacity="0" r="46.5" stroke="#FFFFFF" stroke-width="4" transform="rotate(-90)"></circle><polygon class="svg-autoplay-triangle" fill="#fff" points="32,27 72,49 32,71"></polygon></svg><div class="cancel-autoplay cancel-1">Hủy</div></a></div>';
-function endgetThumb(entry, def) {
-    var thumburl = def;
-    try { thumburl = entry.media$thumbnail.url.replace("/s72-c","")}
-    catch(error) {
-        d = $("<span>"+entry.content.$t+"</span>").find("img").attr("src");
-        if(d)
-            thumburl = d;
-        else
-            thumburl = def;
-    }
-    return thumburl;
-}
-function endsetLink(selector, template, defthumb, entry) {
-  var date = entry.published.$t.match(/\d+/g);
-  date = new Date(date[0],date[1]-1,date[2],date[3],date[4],date[5]); // convert iso
-  var thumburl = endgetThumb(entry, defthumb);
-  var url = $(selector).attr("href");var redirect = $(selector).attr("content");
-  var summary = $("<span>"+entry.content.$t+"</span>").text();
-var label = $("<span>"+entry.category[0].term+"</span>").text();
-var author = $("<span>"+entry.author[0].name.$t+"</span>").text();
-
-  if(summary.length > maxSummaryLength) {
-    summary = summary.substring(0, maxSummaryLength);
-    var indexBreak = summary.lastIndexOf(" ");
-    summary = summary.substring(0, indexBreak)+"...";
-  }
-
-  var htm = template.replace(/\[title\]/g, entry.title.$t);
-  htm = htm.replace(/\[date\]/g, date.toLocaleDateString());
-  htm = htm.replace(/\[datetime\]/g, date.toLocaleString());
-  htm = htm.replace(/\[summary\]/g, summary);htm = htm.replace(/\[label\]/g, label);htm = htm.replace(/\[author\]/g, author);
-  htm = htm.replace(/\[thumburl\]/g, thumburl);
-  htm = htm.replace(/\[url\]/g, url);htm = htm.replace(/\[redirect\]/g, redirect);
-  var imghtm = "";
-  if(thumburl != "")
-    imghtm = '<img src="'+thumburl+'">';
-  htm = htm.replace(/\[img\]/g, imghtm);
-  $(selector).replaceWith(htm);
-}
-function EndPreviousUrl(entry) { endsetLink("a.previous-link", ifcurrentvideoendsshowpreviousVideo, defaultThumburl, entry);}
-function EndNextUrl(entry) { endsetLink("a.next-link", ifcurrentvideoendsshownextVideo, defaultThumburl, entry); }
-$(window).load(function() {
-  window.setTimeout(function() {
-    var timestamp = $(".published").attr("title");
-    if(timestamp && timestamp != "")
-      $.getJSON("/feeds/posts/default?alt=json-in-script&published-min="+encodeURIComponent(timestamp)+"&max-results=0&callback=?", function(resp) {
-        var postindex = parseInt(resp.feed.openSearch$totalResults.$t);
-        if(postindex > 1)
-          $.getJSON("/feeds/posts/default?alt=json-in-script&start-index="+(postindex-1)+"&max-results=3&callback=?", function(resp) {
-            EndNextUrl(resp.feed.entry[0]);
-            var postcount = parseInt(resp.feed.openSearch$totalResults.$t);
-            var startindex = parseInt(resp.feed.openSearch$startIndex.$t);
-            if(postcount - startindex > 1) EndPreviousUrl(resp.feed.entry[2]);
-          });
-        else
-          $.getJSON("/feeds/posts/default?alt=json-in-script&start-index=2&max-results=1&callback=?", function(resp) { EndPreviousUrl(resp.feed.entry[0]); });
-      });
-  }, 250);
-});
-
+if(document.documentElement.clientWidth>1000){   
+$('.redirect-video-url').attr('content','10;url=' + $('.redirect-video-url').attr('content'));
 $('.autoplay-is-on').removeClass('hide').addClass('show');$('.video-endscreen-bg').removeClass('hide').addClass('show');
 $('.autoplay-is-on').css({'visibility':'visible'});$('.svg-autoplay-ring').css({'display':'block','stroke':'white','stroke-width':'4','stroke-dashoffset':'0','stroke-dasharray':'293','animation':'progress-anim 10s ease'});$('.video-endscreen-bg').css({'visibility':'visible'});$('video').css({'z-index':'1'});$('.v-control').css('opacity','1');$('.play-pause').removeClass('show').addClass('hide');$('.replay-icon').removeClass('hide').addClass('show');$('.replay-icon').click(function(){$video[0].play();});
 if($.cookie('autoplayMode')=='true'){$('.turn-on-autoplay').click();$('.autoplay-is-on').addClass('z-index');$('.video-endscreen-bg,.fullscreen-top').removeClass('z-index');}else{$('.turn-off-autoplay').click();$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');$('.autoplay-is-on').removeClass('z-index');};
