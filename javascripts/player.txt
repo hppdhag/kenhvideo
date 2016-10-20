@@ -343,6 +343,7 @@ $video[0].play();
 
 $video.on('playing',function(){$video[0].play;
 if(document.documentElement.clientWidth>1000){
+$('.autoplay-on-url').attr('content',$('.newer-link').attr('href'));
 $('.autoplay-is-on').removeClass('show').addClass('hide');$('.video-endscreen-bg').removeClass('show').addClass('hide');$('.video-endscreen-bg').css({'visibility':'hidden'});$('video').css({'z-index':'98'});
 $('.play-pause').removeClass('hide').addClass('show');$('.replay-icon').removeClass('show').addClass('hide');
 }
