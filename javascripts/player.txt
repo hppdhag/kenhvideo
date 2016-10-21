@@ -50,8 +50,8 @@ function setLink(selector, template, defthumb, entry) {
   htm = htm.replace(/\[img\]/g, imghtm);
   $(selector).replaceWith(htm);
 }
-function PreviousUrl(entry) { setLink("a.blog-pager-older-link", previousVideo, defaultThumburl, entry); }
-function NextUrl(entry) { setLink("a.blog-pager-newer-link", nextVideo, defaultThumburl, entry); }
+function PreviousUrl(entry){setLink("a.blog-pager-older-link",previousVideo,defaultThumburl,entry);}
+function NextUrl(entry){setLink("a.blog-pager-newer-link",nextVideo,defaultThumburl,entry);}
 $(window).load(function() {
   window.setTimeout(function() {
     var timestamp = $(".published").attr("title");
@@ -70,8 +70,9 @@ $(window).load(function() {
       });
   }, 250);
 });
-function EndPreviousUrl(entry) {setLink("a.previous-link", ifcurrentvideoendsshowpreviousVideo, defaultThumburl, entry);}
-function EndNextUrl(entry) {setLink("a.next-link", ifcurrentvideoendsshownextVideo, defaultThumburl, entry); }
+function EndPreviousUrl(entry){setLink("a.previous-link",ifcurrentvideoendsshowpreviousVideo,defaultThumburl,entry);}
+function EndNextUrl(entry){setLink("a.next-link",ifcurrentvideoendsshownextVideo,defaultThumburl,entry);}
+jQuery.noConflict();
 $(window).load(function() {
   window.setTimeout(function() {
     var timestamp = $(".published").attr("title");
