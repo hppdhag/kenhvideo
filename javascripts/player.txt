@@ -320,7 +320,6 @@ volumechange: null
 //AUTOPLAY MODE: NEXT-PREV ITEMS OR RELATED ITEMS
 $('.turn-on-autoplay').click(function(){$.cookie('autoplayMode',true);$('#turn-on-autoplay').addClass('selected');$('#turn-off-autoplay').removeClass('selected');$('.autoplay-on').addClass('show').removeClass('hide');$('.autoplay-off').addClass('hide').removeClass('show')});
 $('.turn-off-autoplay').click(function(){$('#turn-off-autoplay').addClass('selected');$('#turn-on-autoplay').removeClass('selected');$('.autoplay-off').addClass('show').removeClass('hide');$('.autoplay-on').addClass('hide').removeClass('show')});
-$('.cancel-previous-2,.calcel-previous-1,.calcel-next-2,.calcel-next-1').click(function(){$('.autoplay-on-url').attr('content','999999999;url=' + $('.newer-link').attr('href'));$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');});
 
 //SPEED CHANGE: 0.25 - 0.5 - 1 - 1.25 - 1.5 - 2
 $('.speed-025').on('click',function(){speed(this,0.25);$('.speed-05').removeClass('selected');$('.speed-1').removeClass('selected');$('.speed-125').removeClass('selected');$('.speed-15').removeClass('selected');$('.speed-2').removeClass('selected');$('.speed_05').removeClass('show').addClass('hide');$('.speed_1').removeClass('show').addClass('hide');$('.speed_125').removeClass('show').addClass('hide');$('.speed_15').removeClass('show').addClass('hide');$('.speed_2').removeClass('show').addClass('hide');$('.speed_025').removeClass('hide').addClass('show')});
