@@ -1,4 +1,6 @@
 if(document.documentElement.clientWidth>1000){
+(function($)
+{
 var maxSummaryLength = 180;
 var defaultThumburl = "http://2.bp.blogspot.com/-mQjGZeHYX9g/VqhEZzEMCuI/AAAAAAABPiI/PIi_AuaxM8k/no-thumbnail.jpg";
 
@@ -72,7 +74,6 @@ $(window).load(function() {
 });
 function EndPreviousUrl(entry){setLink("a.previous-link",ifcurrentvideoendsshowpreviousVideo,defaultThumburl,entry);}
 function EndNextUrl(entry){setLink("a.next-link",ifcurrentvideoendsshownextVideo,defaultThumburl,entry);}
-jQuery.noConflict();
 $(window).load(function() {
   window.setTimeout(function() {
     var timestamp = $(".published").attr("title");
@@ -92,6 +93,7 @@ $(window).load(function() {
   }, 250);
 });
 }
+})(jQuery);
 
 //html5 player
 (function($)
