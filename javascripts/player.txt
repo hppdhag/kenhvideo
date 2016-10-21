@@ -308,7 +308,7 @@ $video[0].play();
 $video.on('playing',function(){$video[0].play;
 if(document.documentElement.clientWidth>1000){
 $('.autoplay-on-url').attr({'content':'text/html;charset=UTF-8','http-equiv':'content-type'});
-$('.autoplay-is-on,.video-endscreen-bg,.replay-icon').removeClass('show').addClass('hide');$('video').css({'z-index':'98'});$('.setting').click(function(){$('.v-control').css('opacity','1');});$('.remove-setting').click(function(){$('.v-control').removeAttr('opacity');});
+$('.autoplay-is-on,.video-endscreen-bg,.replay-icon').removeClass('show').addClass('hide');$('video').css({'z-index':'98'});$('.setting').click(function(){$('.v-control').css('opacity','1');});$('.remove-setting').click(function(){$('.v-control').css('opacity','0');});
 $('.play-pause').removeClass('hide').addClass('show');
 }
 			});
