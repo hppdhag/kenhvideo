@@ -346,7 +346,6 @@ if(document.documentElement.clientWidth>1000){
 $('.autoplay-on-url').attr('content',$('.newer-link').attr('href'));
 $('.autoplay-is-on,.video-endscreen-bg,.replay-icon').removeClass('show').addClass('hide');$('video').css({'z-index':'98'});
 $('.play-pause').removeClass('hide').addClass('show');
-$('.autoplay-on-url').attr('content','999999999;url=' + $('.autoplay-on-url').attr('content'));
 }
 			});
 
