@@ -87,51 +87,6 @@ $(window).load(function() {
   }, 250);
 });
 }
-}
-
-
-if(document.documentElement.clientWidth>1000){
-
-function endgetThumb(entry, def) {
-    var thumburl = def;
-    try { thumburl = entry.media$thumbnail.url.replace("/s72-c","")}
-    catch(error) {
-        d = $("<span>"+entry.content.$t+"</span>").find("img").attr("src");
-        if(d)
-            thumburl = d;
-        else
-            thumburl = def;
-    }
-    return thumburl;
-}
-function endsetLink(selector, template, defthumb, entry) {
-  var date = entry.published.$t.match(/\d+/g);
-  date = new Date(date[0],date[1]-1,date[2],date[3],date[4],date[5]); // convert iso
-  var thumburl = endgetThumb(entry, defthumb);
-  var url = $(selector).attr("href");var redirect = $(selector).attr("content");
-  var summary = $("<span>"+entry.content.$t+"</span>").text();
-var label = $("<span>"+entry.category[0].term+"</span>").text();
-var author = $("<span>"+entry.author[0].name.$t+"</span>").text();
-
-  if(summary.length > maxSummaryLength) {
-    summary = summary.substring(0, maxSummaryLength);
-    var indexBreak = summary.lastIndexOf(" ");
-    summary = summary.substring(0, indexBreak)+"...";
-  }
-
-  var htm = template.replace(/\[title\]/g, entry.title.$t);
-  htm = htm.replace(/\[date\]/g, date.toLocaleDateString());
-  htm = htm.replace(/\[datetime\]/g, date.toLocaleString());
-  htm = htm.replace(/\[summary\]/g, summary);htm = htm.replace(/\[label\]/g, label);htm = htm.replace(/\[author\]/g, author);
-  htm = htm.replace(/\[thumburl\]/g, thumburl);
-  htm = htm.replace(/\[url\]/g, url);htm = htm.replace(/\[redirect\]/g, redirect);
-  var imghtm = "";
-  if(thumburl != "")
-    imghtm = '<img src="'+thumburl+'">';
-  htm = htm.replace(/\[img\]/g, imghtm);
-  $(selector).replaceWith(htm);
-}
-
 
 //html5 player
 (function($)
