@@ -317,7 +317,7 @@ volumechange: null
 			});
 
 //AUTOPLAY MODE: NEXT-PREV ITEMS OR RELATED ITEMS
-$('.turn-on-autoplay').click(function(){$.cookie('autoplayMode',true);$('<meta class='autoplay-on-url'/>').insertAfter('.utf');$('.autoplay-on-url').attr({'http-equiv':'refresh','content':'10;url=' + $('.newer-link').attr('href')});$('#turn-on-autoplay').addClass('selected');$('#turn-off-autoplay').removeClass('selected');$('.autoplay-on').addClass('show').removeClass('hide');$('.autoplay-off').addClass('hide').removeClass('show')});
+$('.turn-on-autoplay').click(function(){$.cookie('autoplayMode',true);$("<meta class='autoplay-on-url'/>").insertAfter('.utf');$('.autoplay-on-url').attr({'http-equiv':'refresh','content':'10;url=' + $('.newer-link').attr('href')});$('#turn-on-autoplay').addClass('selected');$('#turn-off-autoplay').removeClass('selected');$('.autoplay-on').addClass('show').removeClass('hide');$('.autoplay-off').addClass('hide').removeClass('show')});
 $('.turn-off-autoplay').click(function(){$('#turn-off-autoplay').addClass('selected');$('#turn-on-autoplay').removeClass('selected');$('.autoplay-off').addClass('show').removeClass('hide');$('.autoplay-on').addClass('hide').removeClass('show')});
 
 //SPEED CHANGE: 0.25 - 0.5 - 1 - 1.25 - 1.5 - 2
