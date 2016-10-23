@@ -346,8 +346,8 @@ $('.v-control').css('opacity','0');$('.post-video a').removeAttr('href');$('.pos
 				e.preventDefault();
 
 if(!$video[0].paused){
-pause:true;
 if(document.documentElement.clientWidth>1000){	
+pause:true;
 $video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');
 $video[0].pause();$('.big-play').removeClass('show').addClass('hide');$('.big-pause').removeClass('hide').addClass('show');$('.post-video').addClass('opacity');
 }
