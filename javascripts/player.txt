@@ -1,6 +1,4 @@
 if(document.documentElement.clientWidth>1000){
-(function($)
-{
 var maxSummaryLength = 180;
 var defaultThumburl = "http://2.bp.blogspot.com/-mQjGZeHYX9g/VqhEZzEMCuI/AAAAAAABPiI/PIi_AuaxM8k/no-thumbnail.jpg";
 
@@ -92,7 +90,6 @@ $(window).load(function() {
       });
   }, 250);
 });
-})(jQuery);
 }
 
 
