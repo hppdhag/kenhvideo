@@ -315,7 +315,7 @@ $('.autoplay-on-url').attr({'content':'text/html;charset=UTF-8','http-equiv':'co
 $('.autoplay-is-on,.video-endscreen-bg,.replay-icon').removeClass('show').addClass('hide');$('video').css({'z-index':'98'});$('.setting').click(function(){$('.v-control').css('opacity','1');});$('.remove-setting').click(function(){$('.v-control').css('opacity','0');});
 $('.play-pause').removeClass('hide').addClass('show');
 //autoplay mode on cookie
-if($.cookie('autoplayMode')=='true'){$('.turn-on-autoplay').click();}else{$('.turn-off-autoplay').click();}
+if($.cookie('autoplayMode')=='true'){$('.turn-on-autoplay').click();$('.turn-on-autoplay').click();$('.autoplay-is-on').addClass('z-index');$('.video-endscreen-bg,.fullscreen-top').removeClass('z-index');}else{$('.turn-off-autoplay').click();$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');$('.autoplay-is-on').removeClass('z-index');}
 }
 			});
 
@@ -337,7 +337,7 @@ $('.autoplay-is-on').css({'visibility':'visible'});$('.svg-autoplay-ring').css({
 $('.autoplay-on-url').attr({'http-equiv':'refresh','content':'10;url=' + $('.newer-link').attr('href')});
 $('.text-cancel,.x-cancel').click(function(){$('.autoplay-on-url').attr({'content':'text/html;charset=UTF-8','http-equiv':'content-type'});$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');});
 //autoplay mode on cookie
-if($.cookie('autoplayMode')=='true'){$('.autoplay-is-on').addClass('z-index');$('.video-endscreen-bg,.fullscreen-top').removeClass('z-index');$('.v-control').css('opacity','1');}else{$('.video-endscreen-bg,.fullscreen-top').addClass('z-index');$('.autoplay-is-on').removeClass('z-index');$('.v-control').css('opacity','1');}
+if($.cookie('autoplayMode')=='true'){$('.v-control').css('opacity','1');}else{$('.v-control').css('opacity','1');}
 }
 if(document.documentElement.clientWidth<1000){
 $('.v-control').css('opacity','0');$('.post-video a').removeAttr('href');$('.post-video a img').addClass('imgEnd');$('<div class="replayIcon"></div>').insertAfter('.post-video a img');$('video').click(function(){$('.post-video a img').removeClass('imgEnd');$('.replayIcon').remove();$video[0].play();});
