@@ -344,26 +344,24 @@ $('.v-control').css('opacity','0');$('.post-video a').removeAttr('href');$('.pos
 			{
 				e.preventDefault();
 
-if(!$video[0].paused){pause:true;
+if(!$video[0].paused){
 if(document.documentElement.clientWidth>1000){	
-$video[0].pause();
+pause:true;$video[0].pause();
 $video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');
 $('.big-play').removeClass('show').addClass('hide');$('.big-pause').removeClass('hide').addClass('show');$('.post-header').addClass('opacity');
 }
 if(document.documentElement.clientWidth<1000){
-$video[0].play();
-$('.pause-icon').click(function(){$video[0].pause();$video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');$('.v-control').removeClass('opacity');});
+$('.pause-icon').click(function(){pause:true;$video[0].pause();$video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');$('.v-control').removeClass('opacity');});
 }
-}else{play:true;
+}else{
 if(document.documentElement.clientWidth>1000){
-$video[0].play();
+play:true;$video[0].play();
 $video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon');
 $('.big-play').removeClass('hide').addClass('show');$('.big-pause').removeClass('show').addClass('hide');$('.post-header').removeClass('opacity');
 }
 if(document.documentElement.clientWidth<1000){
-$video[0].play();
 $('.post-header').click(function(){$('.v-control').addClass('opacity');});
-$('.play-icon').click(function(){$video[0].play();$video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon');$('.v-control').addClass('opacity');});
+$('.play-icon').click(function(){play:true;$video[0].play();$video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon');$('.v-control').addClass('opacity');});
 }//end code
 }
 
