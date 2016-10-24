@@ -351,6 +351,7 @@ $video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon'
 $('.big-play').removeClass('show').addClass('hide');$('.big-pause').removeClass('hide').addClass('show');$('.post-header').addClass('opacity');
 }
 if(document.documentElement.clientWidth<1000){
+$video[0].play();
 $('.pause-icon').click(function(){$video[0].pause();$video_parent.find('.play-pause').removeClass('pause-icon').addClass('play-icon');$('.v-control').removeClass('opacity');});
 }
 }else{play:true;
@@ -360,6 +361,7 @@ $video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon'
 $('.big-play').removeClass('hide').addClass('show');$('.big-pause').removeClass('show').addClass('hide');$('.post-header').removeClass('opacity');
 }
 if(document.documentElement.clientWidth<1000){
+$video[0].play();
 $('.post-header').click(function(){$('.v-control').addClass('opacity');});
 $('.play-icon').click(function(){$video[0].play();$video_parent.find('.play-pause').removeClass('play-icon').addClass('pause-icon');$('.v-control').addClass('opacity');});
 }//end code
